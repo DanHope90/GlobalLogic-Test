@@ -1,8 +1,10 @@
-function createMedalTable(medals) {
-    // Parse the medal data to produce a medaltable
-    // The winner gets 3 points, second place 2 points and third place 1 point
-    return
-}
+// function createMedalTable(medals) {
+//     // Parse the medal data to produce a medaltable
+//     // The winner gets 3 points, second place 2 points and third place 1 point
+
+// }
+
+const createMedalTable = require('./medals')
 
 describe("Medal Table Generator", () => {
     // Test function, please do not edit
