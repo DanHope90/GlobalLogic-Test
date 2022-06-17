@@ -1,35 +1,41 @@
-//i've created three loops which iterate over each podium finish and add points for 1st 2nd 3rd
-//  Only part of the test failing is that my fuction has Qatar on 2 when they should be on 3
-// Qatar is joint 1st in high jump. I need to alter function to take into account joint places.
-
 function createMedalTable(medals) {
+
+    const firstPlace = medals.map(({podium}) => podium)
+ 
+     const merge = firstPlace.join().split(',')
+   
+     const filterFirst = merge.filter(first => first.startsWith('1.'))
+     const firstObj = filterFirst.map(first => first.slice(2))
+     
+     const filterSecond = merge.filter(second => second.startsWith('2.'))
+     const secondObj = filterSecond.map(second => second.slice(2))
+     
+     const filterThird = merge.filter(third => third.startsWith('3.'))
+     const thirdObj = filterThird.map(third => third.slice(2))
     
-    const firstPlace = medals.map(({podium}) => podium[0].split('').slice(2).join(''))
+    
       let medalCount = {}
-  	    for(let i=0; i<firstPlace.length; i++) {
-            if (medalCount[firstPlace[i]]) {
-                medalCount[firstPlace[i]] += 3
+  	    for(let i=0; i<firstObj.length; i++) {
+            if (medalCount[firstObj[i]]) {
+                medalCount[firstObj[i]] += 3
         } else {
-                medalCount[firstPlace[i]] = 3
+                medalCount[firstObj[i]] = 3
       }
     }
-
-    const secondPlace = medals.map(({podium}) => podium[1].split('').slice(2).join(''))
     
-        for(let i=0; i<secondPlace.length; i++) {
-            if (medalCount[secondPlace[i]]) {
-                medalCount[secondPlace[i]] += 2
+        for(let i=0; i<secondObj.length; i++) {
+            if (medalCount[secondObj[i]]) {
+                medalCount[secondObj[i]] += 2
      } else {
-                 medalCount[secondPlace[i]] = 2
+                 medalCount[secondObj[i]] = 2
      }
    }
-    const thirdPlace = medals.map(({podium}) => podium[2].split('').slice(2).join(''))
       
-       for(let i=0; i<thirdPlace.length; i++) {
-         if (medalCount[thirdPlace[i]]) {
-            medalCount[thirdPlace[i]] += 1
+       for(let i=0; i<thirdObj.length; i++) {
+         if (medalCount[thirdObj[i]]) {
+            medalCount[thirdObj[i]] += 1
     } else {
-           medalCount[thirdPlace[i]] = 1
+           medalCount[thirdObj[i]] = 1
     }
   }
 

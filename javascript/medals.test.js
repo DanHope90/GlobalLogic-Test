@@ -26,6 +26,7 @@ describe("Medal Table Generator", () => {
                 sport: "swimming",
                 podium: ["1.USA", "2.France", "3.Brazil"]
             }
+            
         ];
 
         // Expected output data
