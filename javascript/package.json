@@ -1,14 +1,16 @@
 {
-    "name": "gradtest",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "jest"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "jest": "^27.0.6"
-    }
+  "name": "gradtest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.18.0",
+    "jest": "^27.0.6",
+    "prettier": "2.7.1"
+  }
 }

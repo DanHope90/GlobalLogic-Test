@@ -1,49 +1,40 @@
 function createMedalTable(medals) {
+  const results = medals.map(({ podium }) => podium);
+  const mergeResults = results.join().split(",");
 
-    const firstPlace = medals.map(({podium}) => podium)
- 
-     const merge = firstPlace.join().split(',')
-   
-     const filterFirst = merge.filter(first => first.startsWith('1.'))
-     const firstObj = filterFirst.map(first => first.slice(2))
-     
-     const filterSecond = merge.filter(second => second.startsWith('2.'))
-     const secondObj = filterSecond.map(second => second.slice(2))
-     
-     const filterThird = merge.filter(third => third.startsWith('3.'))
-     const thirdObj = filterThird.map(third => third.slice(2))
-    
-    
-      let medalCount = {}
-  	    for(let i=0; i<firstObj.length; i++) {
-            if (medalCount[firstObj[i]]) {
-                medalCount[firstObj[i]] += 3
-        } else {
-                medalCount[firstObj[i]] = 3
-      }
-    }
-    
-        for(let i=0; i<secondObj.length; i++) {
-            if (medalCount[secondObj[i]]) {
-                medalCount[secondObj[i]] += 2
-     } else {
-                 medalCount[secondObj[i]] = 2
-     }
-   }
-      
-       for(let i=0; i<thirdObj.length; i++) {
-         if (medalCount[thirdObj[i]]) {
-            medalCount[thirdObj[i]] += 1
+  let actualResult = {};
+
+  const filterFirst = mergeResults.filter((first) => first.startsWith("1."));
+  const firstPlace = filterFirst.map((first) => first.slice(2));
+  for (let i = 0; i < firstPlace.length; i++) {
+    if (actualResult[firstPlace[i]]) {
+      actualResult[firstPlace[i]] += 3;
     } else {
-           medalCount[thirdObj[i]] = 1
+      actualResult[firstPlace[i]] = 3;
     }
   }
 
-const actualResult = medalCount
+  const filterSecond = mergeResults.filter((second) => second.startsWith("2."));
+  const secondPlace = filterSecond.map((second) => second.slice(2));
+  for (let i = 0; i < secondPlace.length; i++) {
+    if (actualResult[secondPlace[i]]) {
+      actualResult[secondPlace[i]] += 2;
+    } else {
+      actualResult[secondPlace[i]] = 2;
+    }
+  }
 
-console.log(actualResult)
+  const filterThird = mergeResults.filter((third) => third.startsWith("3."));
+  const thirdPlace = filterThird.map((third) => third.slice(2));
+  for (let i = 0; i < thirdPlace.length; i++) {
+    if (actualResult[thirdPlace[i]]) {
+      actualResult[thirdPlace[i]] += 1;
+    } else {
+      actualResult[thirdPlace[i]] = 1;
+    }
+  }
 
-    return actualResult
+  return actualResult;
 }
 
-module.exports = createMedalTable
+module.exports = createMedalTable;
